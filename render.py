@@ -60,7 +60,7 @@ def main():
         config = yaml.safe_load(stream)
 
     data = {}
-    data['title'] = config['site_title']
+    data['site'] = config['site']
     data['feeds'] = get_feeds(config)
     data['extra_links'] = chunk_list(config['extra_links'], config['rows'])
 

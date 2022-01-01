@@ -3,8 +3,11 @@
 
 <head>
   <meta charset="utf-8">
-  <title>{{ data['title'] }}</title>
+  <title>{{ data['site']['title'] }}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="robots" content="nofollow, noarchive">
+  <meta name="description" content="{{ data['site']['description'] }}">
+  <meta name="keywords" content="{{ data['site']['keywords']|join(', ') }}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css" integrity="sha512-GQGU0fMMi238uA+a/bdWJfpUGKUkBdgfFdgBm72SUQ6BeyWjoY/ton0tEjH+OSH9iP4Dfh+7HM0I9f5eR0L/4w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
     a {
@@ -31,7 +34,7 @@
   <div class="container">
   <div class="row pt-3 mt-5 mb-3">
     <div class="col-md mx-3">
-      <h1>{{ data['title']|upper }}</h1>
+      <h1>{{ data['site']['title']|upper }}</h1>
     </div>
   </div>
   {% for group in data['feeds'] %}
