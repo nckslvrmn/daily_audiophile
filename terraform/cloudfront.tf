@@ -12,7 +12,7 @@ resource "aws_cloudfront_distribution" "rss_grid" {
   is_ipv6_enabled = false
 
   aliases             = ["${var.name}.${var.dns_domain}"]
-  default_root_object = "/index.html"
+  default_root_object = "index.html"
 
   default_cache_behavior {
     allowed_methods  = ["DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT"]
@@ -49,8 +49,8 @@ resource "aws_cloudfront_distribution" "rss_grid" {
 
     viewer_protocol_policy = "https-only"
     min_ttl                = 0
-    default_ttl            = 3600
-    max_ttl                = 86400
+    default_ttl            = 900
+    max_ttl                = 900
   }
 
   price_class = "PriceClass_100"

@@ -7,6 +7,9 @@ posts: 5
 
 # tells the template whether to add a visual indicator for new post
 new_post_age_threshold: 604800
+
+# s3 bucket to upload rendered html
+s3_bucket: my-superfun-bucket
 #### GLOBAL OPTIONS ####
 
 

@@ -4,6 +4,7 @@ import time
 
 from datetime import datetime
 
+import boto3
 import feedparser
 import yaml
 
@@ -51,11 +52,23 @@ def get_feeds(config):
 
 def render_template(data):
     template = Template(open('template.html.j2').read())
-    with open('index.html', 'w') as f:
+    with open('/tmp/index.html', 'w') as f:
         f.write(template.render(data=data))
+    print('template rendered locally')
 
 
-def main():
+def upload_rendered(bucket):
+    s3 = boto3.client('s3')
+    s3.upload_file(
+        '/tmp/index.html',
+        bucket,
+        'index.html',
+        ExtraArgs={'ContentType': 'text/html'}
+    )
+    print('rendered file uploaded to s3')
+
+
+def handler(event, context):
     with open('config.yaml', 'r') as stream:
         config = yaml.safe_load(stream)
 
@@ -65,7 +78,4 @@ def main():
     data['extra_links'] = chunk_list(config['extra_links'], config['rows'])
 
     render_template(data)
-
-
-if __name__ == "__main__":
-    main()
+    upload_rendered(config['s3_bucket'])
