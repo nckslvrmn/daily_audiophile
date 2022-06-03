@@ -12,18 +12,14 @@ from jinja2 import Template
 
 
 def chunk_list(lst, rows):
-    return list((lst[i:i+rows] for i in range(0, len(lst), rows)))
+    return list((lst[i: i + rows] for i in range(0, len(lst), rows)))
 
 
 def new_post(post_time, new_post_age_threshold):
     post_time = datetime.now().timetuple() if post_time is None else post_time
     parsed_post_time = time.mktime(post_time)
     current_time = time.mktime(datetime.now().timetuple())
-
-    if abs(current_time - parsed_post_time) < new_post_age_threshold:
-        return True
-    else:
-        return False
+    return abs(current_time - parsed_post_time) < new_post_age_threshold
 
 
 def get_feeds(config):
@@ -77,3 +73,7 @@ def handler(event, context):
 
     render_template(data)
     upload_rendered(config['s3_bucket'])
+
+
+if __name__ == "__main__":
+    handler({}, {})
