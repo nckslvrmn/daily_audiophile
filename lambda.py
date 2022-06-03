@@ -16,12 +16,10 @@ def chunk_list(lst, rows):
 
 
 def new_post(post_time, new_post_age_threshold):
-    if post_time is None:
-        parsed_post_time = time.mktime(datetime.now().timetuple())
-    else:
-        parsed_post_time = time.mktime(post_time)
-
+    post_time = datetime.now().timetuple() if post_time is None else post_time
+    parsed_post_time = time.mktime(post_time)
     current_time = time.mktime(datetime.now().timetuple())
+
     if abs(current_time - parsed_post_time) < new_post_age_threshold:
         return True
     else:
