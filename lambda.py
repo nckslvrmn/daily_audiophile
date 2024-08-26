@@ -11,58 +11,48 @@ import yaml
 from jinja2 import Template
 
 
-def chunk_list(lst, rows):
-    return list((lst[i : i + rows] for i in range(0, len(lst), rows)))
+class RSSGrid:
+    def __init__(self):
+        with open("config.yaml", "r") as stream:
+            self.config = yaml.safe_load(stream)
 
+    def __new_post(self, post_time):
+        parsed_post_time = time.mktime(post_time)
+        current_time = time.mktime(datetime.now().timetuple())
+        return abs(current_time - parsed_post_time) < self.config["new_post_age_threshold"]
 
-def new_post(post_time, new_post_age_threshold):
-    post_time = datetime.now().timetuple() if post_time is None else post_time
-    parsed_post_time = time.mktime(post_time)
-    current_time = time.mktime(datetime.now().timetuple())
-    return abs(current_time - parsed_post_time) < new_post_age_threshold
-
-
-def get_feeds(config):
-    feeds = chunk_list(config["feeds"], config["rows"])
-
-    for group in feeds:
-        for feed in group:
+    def get_feeds(self):
+        for feed in self.config["feeds"]:
             feed["posts"] = []
             feed_data = feedparser.parse(feed["rss_url"])
-            for entry in feed_data.entries[: config["posts"]]:
-                new = new_post(entry.get("published_parsed"), config["new_post_age_threshold"])
-                feed["posts"].append({"title": entry["title"], "link": entry["link"], "new": new})
+            for entry in feed_data.entries[: self.config["posts"]]:
+                feed["posts"].append(
+                    {
+                        "title": entry["title"],
+                        "link": entry["link"],
+                        "new": self.__new_post(entry.get("published_parsed", datetime.now().timetuple())),
+                    }
+                )
             print(f"added {len(feed['posts'])} posts for {feed['name']}")
 
-    return feeds
+    def render_template(self):
+        template = Template(open("template.html.j2").read())
+        with open("/tmp/index.html", "w") as f:
+            f.write(template.render(data=self.config))
+        print("template rendered locally")
 
-
-def render_template(data):
-    template = Template(open("template.html.j2").read())
-    with open("/tmp/index.html", "w") as f:
-        f.write(template.render(data=data))
-    print("template rendered locally")
-
-
-def upload_rendered(bucket):
-    s3 = boto3.client("s3")
-    s3.upload_file("/tmp/index.html", bucket, "index.html", ExtraArgs={"ContentType": "text/html"})
-    print("rendered file uploaded to s3")
+    def upload_rendered(self):
+        s3 = boto3.client("s3")
+        s3.upload_file("/tmp/index.html", self.config["bucket"], "index.html", ExtraArgs={"ContentType": "text/html"})
+        print("rendered file uploaded to s3")
 
 
 def handler(*_):
-    with open("config.yaml", "r") as stream:
-        config = yaml.safe_load(stream)
-
-    data = {
-        "site": config["site"],
-        "feeds": get_feeds(config),
-        "extra_links": chunk_list(config["extra_links"], config["rows"]),
-    }
-
-    render_template(data)
-    upload_rendered(config["s3_bucket"])
+    rg = RSSGrid()
+    rg.get_feeds()
+    rg.render_template()
+    rg.upload_rendered()
 
 
 if __name__ == "__main__":
-    handler({}, {})
+    handler()

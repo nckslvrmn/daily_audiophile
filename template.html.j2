@@ -8,68 +8,79 @@
   <meta name="robots" content="nofollow, noarchive">
   <meta name="description" content="{{ data['site']['description'] }}">
   <meta name="keywords" content="{{ data['site']['keywords']|join(', ') }}">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/css/bootstrap.min.css" integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/css/bootstrap.min.css"
+    integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
     a {
       text-decoration: none;
       color: #2361a1;
     }
+
     tr td {
       padding-left: 0 !important;
     }
+
     tr th {
       padding-left: 0 !important;
     }
+
     td a {
       color: #000;
     }
+
     strong em {
       color: #ff8a00;
       font-size: 0.6em;
+    }
+
+    .feed {
+      width: 300px;
+      display: inline-block;
+      float: unset;
     }
   </style>
 </head>
 
 <body class="py-3">
-  <div class="container">
-  <div class="row pt-3 mt-5 mb-3">
-    <div class="col-md mx-3">
-      <h1>{{ data['site']['title']|upper }}</h1>
+  <div class="p-3">
+    <div class="row pt-3 mt-5 mb-3">
+      <div class="col-md mx-3">
+        <h1>{{ data['site']['title']|upper }}</h1>
+      </div>
+    </div>
+    <div class="row py-3">
+      {% for feed in data['feeds'] %}
+      <div class="feed mx-3">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">
+                <h4><a href="{{ feed['front_page'] }}" target="_blank">{{ feed['name'] }}</a></h4>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for post in feed['posts'] %}
+            <tr>
+              <td><a href="{{ post['link'] }}" target="_blank">{{ post['title'] }}</a>{% if post['new'] == true
+                %}<strong><em>&nbsp;&nbsp;&nbsp;NEW</em></strong>{% endif %}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="row py-2"></div>
+    <div class="row p-0">
+      {% for link in data['extra_links'] %}
+      <div class="feed mx-3">
+        <h6><a href="{{ link['link'] }}" target="_blank">{{ link['name'] }}</a></h6>
+      </div>
+      {% endfor %}
     </div>
   </div>
-  {% for group in data['feeds'] %}
-  <div class="row py-3">
-    {% for feed in group %}
-    <div class="col-md mx-3">
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col"><h4><a href="{{ feed['front_page'] }}" target="_blank">{{ feed['name'] }}</a></h4></th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for post in feed['posts'] %}
-          <tr>
-            <td><a href="{{ post['link'] }}" target="_blank">{{ post['title'] }}</a>{% if post['new'] == true %}<strong><em>&nbsp;&nbsp;&nbsp;NEW</em></strong>{% endif %}</td>
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
-    </div>
-    {% endfor %}
-  </div>
-  {% endfor %}
-  <div class="row py-2"></div>
-  {% for group in data['extra_links'] %}
-  <div class="row p-0">
-    {% for link in group %}
-    <div class="col-md mx-3">
-      <h6><a href="{{ link['link'] }}" target="_blank">{{ link['name'] }}</a></h6>
-    </div>
-    {% endfor %}
-  </div>
-  {% endfor %}
-</div>
 </body>
 
 </html>
