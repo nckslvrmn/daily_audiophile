@@ -44,7 +44,9 @@ class RSSGrid:
 
     def upload_rendered(self):
         s3 = boto3.client("s3")
-        s3.upload_file("/tmp/index.html", self.config["bucket"], "index.html", ExtraArgs={"ContentType": "text/html"})
+        s3.upload_file(
+            "/tmp/index.html", self.config["s3_bucket"], "index.html", ExtraArgs={"ContentType": "text/html"}
+        )
         print("rendered file uploaded to s3")
 
 
