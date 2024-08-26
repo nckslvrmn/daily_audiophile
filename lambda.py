@@ -17,9 +17,10 @@ class RSSGrid:
             self.config = yaml.safe_load(stream)
 
     def __new_post(self, post_time):
-        parsed_post_time = time.mktime(post_time)
-        current_time = time.mktime(datetime.now().timetuple())
-        return abs(current_time - parsed_post_time) < self.config["new_post_age_threshold"]
+        return (
+            abs(time.mktime(datetime.now().timetuple()) - time.mktime(post_time))
+            < self.config["new_post_age_threshold"]
+        )
 
     def get_feeds(self):
         for feed in self.config["feeds"]:
@@ -30,7 +31,7 @@ class RSSGrid:
                     {
                         "title": entry["title"],
                         "link": entry["link"],
-                        "new": self.__new_post(entry.get("published_parsed", datetime.now().timetuple())),
+                        "new": self.__new_post(entry.get("published_parsed") or datetime.now().timetuple()),
                     }
                 )
             print(f"added {len(feed['posts'])} posts for {feed['name']}")
