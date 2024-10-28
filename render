@@ -1,0 +1,48 @@
+#!/usr/bin/env python3
+
+from datetime import datetime
+from time import mktime
+
+import json
+
+import feedparser
+
+from jinja2 import Template
+
+
+def get_feed(feed):
+    for i in range(3):
+        f = feedparser.parse(feed)
+        if len(f.entries) > 0:
+            return f
+        else:
+            if i == 2:
+                return f
+
+
+def main():
+    ct = datetime.now().timetuple()
+    with open("feeds.json", "r") as f:
+        data = json.loads(f.read())
+
+    for name, info in data["feeds"].items():
+        info["posts"] = []
+        feed_data = get_feed(info["feed"])
+        for entry in feed_data.entries[:5]:
+            info["posts"].append(
+                {
+                    "title": entry["title"],
+                    "link": entry["link"],
+                    "new": abs(mktime(ct) - mktime(entry.get("published_parsed") or ct)) < 86400,
+                }
+            )
+        print(f"posts captured for {name}")
+
+    template = Template(open("template.html.j2").read())
+    with open("rendered/index.html", "w") as f:
+        f.write(template.render(data=data))
+    print("template rendered")
+
+
+if __name__ == "__main__":
+    main()

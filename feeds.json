@@ -1,0 +1,204 @@
+{
+  "feeds": {
+    "Stereophile": {
+      "home": "https://www.stereophile.com/frontpage",
+      "feed": "https://www.stereophile.com/rss.xml"
+    },
+    "Absolute Sound": {
+      "home": "https://www.theabsolutesound.com/",
+      "feed": "https://www.theabsolutesound.com/articles/feed"
+    },
+    "Enjoy The Music": {
+      "home": "https://www.enjoythemusic.com/",
+      "feed": "https://www.enjoythemusic.com/enjoythemusic.xml"
+    },
+    "High Fidelity": {
+      "home": "https://www.highfidelity.pl/",
+      "feed": "https://highfidelity.pl/rss2012.php"
+    },
+    "Positive Feedback": {
+      "home": "https://positive-feedback.com/",
+      "feed": "https://positive-feedback.com/feed/atom/"
+    },
+    "Tone Audio": {
+      "home": "https://www.tonepublications.com/",
+      "feed": "https://www.tonepublications.com/feed/"
+    },
+    "Soundstage Hi-Fi": {
+      "home": "https://www.soundstagehifi.com/index.php",
+      "feed": "https://www.soundstagehifi.com/index.php?format=feed&type=rss"
+    },
+    "Dagogo": {
+      "home": "https://www.dagogo.com/",
+      "feed": "https://www.dagogo.com/feed/"
+    },
+    "Audiophile Style": {
+      "home": "https://audiophilestyle.com/ca/",
+      "feed": "https://audiophilestyle.com/ca/?rss=1"
+    },
+    "Analog Planet": {
+      "home": "https://www.analogplanet.com/frontpage",
+      "feed": "https://www.analogplanet.com/rss.xml"
+    },
+    "Audiophiliac Daily Show": {
+      "home": "https://www.youtube.com/channel/UC9wBmplRUhaCi-aNrkfgeTg",
+      "feed": "https://www.youtube.com/feeds/videos.xml?channel_id=UC9wBmplRUhaCi-aNrkfgeTg"
+    },
+    "Part-time Audiophile": {
+      "home": "https://parttimeaudiophile.com/",
+      "feed": "https://parttimeaudiophile.com/feed/"
+    },
+    "Darko.Audio": {
+      "home": "https://darko.audio/",
+      "feed": "https://darko.audio/feed"
+    },
+    "Audiophilia": {
+      "home": "https://www.audiophilia.com/",
+      "feed": "https://www.audiophilia.com/reviews?format=rss"
+    },
+    "Hi-fi+": {
+      "home": "https://hifiplus.com/",
+      "feed": "https://hifiplus.com/articles/feed/"
+    },
+    "Hi-fi News": {
+      "home": "https://www.hifinews.com/frontpage",
+      "feed": "https://www.hifinews.com/rss.xml"
+    },
+    "Ecoustics": {
+      "home": "https://www.ecoustics.com/",
+      "feed": "https://www.ecoustics.com/feed/"
+    },
+    "Secrets of Home Theater and High Fidelity": {
+      "home": "https://hometheaterhifi.com/",
+      "feed": "https://hometheaterhifi.com/feed/"
+    },
+    "10 Audio": {
+      "home": "https://www.10audio.com/",
+      "feed": "https://www.10audio.com/feed"
+    },
+    "Wall of Sound": {
+      "home": "https://wallofsound.ca/",
+      "feed": "https://wallofsound.ca/feed/"
+    },
+    "Headfonics": {
+      "home": "https://headfonics.com/",
+      "feed": "https://headfonics.com/feed/"
+    },
+    "Audio Head": {
+      "home": "https://audio-head.com/",
+      "feed": "https://audio-head.com/feed/"
+    },
+    "Headphone.Guru": {
+      "home": "https://headphone.guru/",
+      "feed": "https://headphone.guru/feed/"
+    },
+    "Hi-fi Choice": {
+      "home": "https://www.hifichoice.com/frontpage",
+      "feed": "https://www.hifichoice.com/rss.xml"
+    },
+    "Audio Bacon": {
+      "home": "https://audiobacon.net/",
+      "feed": "https://audiobacon.net/feed/"
+    },
+    "AudioFi": {
+      "home": "https://audiofi.net/",
+      "feed": "https://audiofi.net/feed/"
+    },
+    "Audio Appraisal": {
+      "home": "https://www.audioappraisal.com/",
+      "feed": "https://www.audioappraisal.com/feed/"
+    },
+    "Stereonet": {
+      "home": "https://www.stereonet.com/",
+      "feed": "https://www.stereonet.com/site/content-rss"
+    },
+    "Hi-fi Trends": {
+      "home": "https://hifitrends.com/",
+      "feed": "https://hifitrends.com/feed/"
+    },
+    "AudioMatters": {
+      "home": "https://audiomatters.blogspot.com/",
+      "feed": "https://feeds.feedburner.com/blogspot/IPuyM?format=xml"
+    },
+    "Audio Pursuit": {
+      "home": "https://www.audiopursuit.com/",
+      "feed": "https://www.audiopursuit.com/feeds/posts/default"
+    },
+    "Hifi Advice": {
+      "home": "https://www.hifi-advice.com/blog/",
+      "feed": "https://www.hifi-advice.com/blog/feed/"
+    },
+    "Audiosolace": {
+      "home": "https://audiosolace.com/",
+      "feed": "https://audiosolace.com/feed/"
+    },
+    "Resistor Mag": {
+      "home": "https://www.resistormag.com/",
+      "feed": "https://www.resistormag.com/feed"
+    },
+    "Twittering Machines": {
+      "home": "https://twitteringmachines.com/",
+      "feed": "https://twitteringmachines.com/feed/"
+    },
+    "Headfonia": {
+      "home": "https://www.headfonia.com/",
+      "feed": "https://www.headfonia.com/feed"
+    }
+  },
+  "extra_links": {
+    "13th Note HiFi Reviews": "https://www.13thnote.net",
+    "6moons": "https://www.6moons.com",
+    "Alpha Audio": "https://alpha-audio.net",
+    "Analog Dept": "https://theanalogdept.com/",
+    "Archimago’s Musings": "https://archimago.blogspot.com/",
+    "Audio Activity": "https://www.audio-activity.com/",
+    "Audio Asylum": "https://www.audioasylum.com",
+    "Audio Beat": "https://www.theaudiobeat.com/",
+    "Audio Beatnik": "https://theaudiobeatnik.com/",
+    "Audio Science Review": "https://www.audiosciencereview.com",
+    "AudioAficionado.org": "https://www.audioaficionado.org",
+    "AudioCircle": "https://www.audiocircle.com",
+    "Audiogon": "https://www.audiogon.com",
+    "AudioKarma.org": "https://www.audiokarma.org",
+    "AudioNervosa": "https://www.audionervosa.com",
+    "Audionirvana": "https://www.audionirvana.org",
+    "audiophil-online": "https://www.audiophil-online.com",
+    "Audiophile Audition": "https://www.audaud.com",
+    "Audiophile Man": "https://www.theaudiophileman.com",
+    "Audiophile Review": "https://audiophilereview.com",
+    "AudioShark": "https://www.audioshark.org",
+    "AVMentor.net": "https://www.avmentor.net",
+    "AVShowrooms": "https://www.avshowrooms.com",
+    "Canuck Audio Mart": "https://www.canuckaudiomart.com",
+    "Costruire HIFI": "https://www.costruirehifi.net",
+    "Everything Audio Network": "https://everythingaudionetwork.blogspot.com",
+    "GoodSoundClub": "https://www.goodsoundclub.com",
+    "Head-Fi": "https://www.head-fi.org",
+    "Hi-Fi Knights": "https://hifiknights.com",
+    "Hi-Fi World": "https://www.hi-fiworld.co.uk",
+    "HiFi Pig": "https://www.hifipig.com",
+    "HIFICRITIC": "https://www.hificritic.com",
+    "HiFiHaven.org": "https://www.hifihaven.org",
+    "HifiZine": "https://www.hifizine.com",
+    "High-EndAudio.com": "https://www.high-endaudio.com",
+    "Inner": "https://www.inner-magazines.com/",
+    "Mono &amp; Stereo": "https://www.monoandstereo.com/",
+    "NOVO High End": "https://novohighend.com/",
+    "Pink Fish Media": "https://www.pinkfishmedia.net",
+    "Real HD-Audio": "https://www.realhd-audio.com",
+    "ReMusic": "https://www.remusic.it/index.php?node=288&amp;lng=3&amp;rif=6b743287e0",
+    "SoundEvaluations": "https://soundevaluations.blogspot.ca/",
+    "Stereo Magazine": "https://stereo-magazine.com",
+    "Stereo Times": "https://www.stereotimes.com",
+    "StereoLife": "https://www.stereolifemagazine.com",
+    "Steve Hoffman Music Forums": "https://forums.stevehoffman.tv",
+    "Superphonica": "https://www.superphonica.com",
+    "Tannhauser Gate": "https://www.thetannhausergate.com",
+    "The Ear": "https://www.the-ear.net",
+    "The Sound Advocate": "https://www.thesoundadvocate.com/",
+    "TNT-Audio": "https://www.tnt-audio.com/",
+    "Ultra High Fidelity": "https://www.uhfmag.com",
+    "US Audio Mart": "https://www.usaudiomart.com",
+    "What’s Best Forum": "https://www.whatsbestforum.com"
+  }
+}

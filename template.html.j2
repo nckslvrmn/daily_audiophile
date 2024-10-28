@@ -3,14 +3,12 @@
 
 <head>
   <meta charset="utf-8">
-  <title>{{ data['site']['title'] }}</title>
+  <title>Daily Audiophile</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="robots" content="nofollow, noarchive">
-  <meta name="description" content="{{ data['site']['description'] }}">
-  <meta name="keywords" content="{{ data['site']['keywords']|join(', ') }}">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/css/bootstrap.min.css"
-    integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <meta name="description" content="A modern take on the RSS landing page, tailored for audiophiles">
+  <meta name="keywords" content="rss, audiophile">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/css/bootstrap.min.css" integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
     a {
       text-decoration: none;
@@ -46,22 +44,22 @@
   <div class="p-3">
     <div class="row pt-3 mt-5 mb-3">
       <div class="col-md mx-3">
-        <h1>{{ data['site']['title']|upper }}</h1>
+        <h1>DAILY AUDIOPHILE</h1>
       </div>
     </div>
     <div class="row py-3">
-      {% for feed in data['feeds'] %}
+      {% for name, info in data['feeds'].items() %}
       <div class="feed m-3">
         <table class="table">
           <thead>
             <tr>
               <th scope="col">
-                <h4><a href="{{ feed['front_page'] }}" target="_blank">{{ feed['name'] }}</a></h4>
+                <h4><a href="{{ info['home'] }}" target="_blank">{{ name }}</a></h4>
               </th>
             </tr>
           </thead>
           <tbody>
-            {% for post in feed['posts'] %}
+            {% for post in info['posts'] %}
             <tr>
               <td><a href="{{ post['link'] }}" target="_blank">{{ post['title'] }}</a>{% if post['new'] == true
                 %}<strong><em>&nbsp;&nbsp;&nbsp;NEW</em></strong>{% endif %}</td>
@@ -74,9 +72,9 @@
     </div>
     <div class="row py-2"></div>
     <div class="row p-0">
-      {% for link in data['extra_links'] %}
+      {% for name, link in data['extra_links'].items() %}
       <div class="feed mx-3">
-        <h6><a href="{{ link['link'] }}" target="_blank">{{ link['name'] }}</a></h6>
+        <h6><a href="{{ link }}" target="_blank">{{ name }}</a></h6>
       </div>
       {% endfor %}
     </div>
