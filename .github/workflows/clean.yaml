@@ -2,7 +2,7 @@ name: Clean Workflow Logs
 
 on:
   schedule:
-    - cron: "0 * * * *"
+    - cron: "* * * * *"
 
 jobs:
   clean-logs:
