@@ -13,7 +13,10 @@ from jinja2 import Template
 
 def get_feed(feed):
     for i in range(3):
-        f = parse_feed(feed)
+        try:
+            f = parse_feed(feed)
+        except:
+            continue
         if len(f.entries) > 0:
             return f
         else:
