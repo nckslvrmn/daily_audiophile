@@ -28,16 +28,14 @@ jobs:
         uses: actions/checkout@v4
       - name: Setup Pages
         uses: actions/configure-pages@v5
-      - name: setup python
-        uses: actions/setup-python@v5
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
         with:
-          python-version: "3.12"
-      - name: install dependencies
-        run: pip install -r requirements.txt
+          ruby-version: "3.4.2"
       - name: render
-        run: ./render
+        run: ruby render.rb
         env:
-          PYTHONUNBUFFERED: 1
+          RUBYOPT: "-W0"
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

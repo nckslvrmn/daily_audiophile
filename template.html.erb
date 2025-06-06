@@ -48,35 +48,34 @@
       </div>
     </div>
     <div class="row py-3">
-      {% for name, info in data['feeds'].items() %}
+      <% data['feeds'].each do |name, info| %>
       <div class="feed m-3">
         <table class="table">
           <thead>
             <tr>
               <th scope="col">
-                <h4><a href="{{ info['home'] }}" target="_blank">{{ name }}</a></h4>
+                <h4><a href="<%= info['home'] %>" target="_blank"><%= name %></a></h4>
               </th>
             </tr>
           </thead>
           <tbody>
-            {% for post in info['posts'] %}
+            <% info['posts'].each do |post| %>
             <tr>
-              <td><a href="{{ post['link'] }}" target="_blank">{{ post['title'] }}</a>{% if post['new'] == true
-                %}<strong><em>&nbsp;&nbsp;&nbsp;NEW</em></strong>{% endif %}</td>
+              <td><a href="<%= post['link'] %>" target="_blank"><%= post['title'] %></a><% if post['new'] == true %><strong><em>&nbsp;&nbsp;&nbsp;NEW</em></strong><% end %></td>
             </tr>
-            {% endfor %}
+            <% end %>
           </tbody>
         </table>
       </div>
-      {% endfor %}
+      <% end %>
     </div>
     <div class="row py-2"></div>
     <div class="row p-0">
-      {% for name, link in data['extra_links'].items() %}
+      <% data['extra_links'].each do |name, link| %>
       <div class="feed mx-3">
-        <h6><a href="{{ link }}" target="_blank">{{ name }}</a></h6>
+        <h6><a href="<%= link %>" target="_blank"><%= name %></a></h6>
       </div>
-      {% endfor %}
+      <% end %>
     </div>
   </div>
 </body>
