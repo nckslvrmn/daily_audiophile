@@ -4,6 +4,8 @@ from datetime import timedelta
 
 import json
 
+import requests
+
 from dateutil.parser import parse
 from dateutil.tz import UTC
 from dateutil.utils import today
@@ -12,16 +14,24 @@ from jinja2 import Template
 
 
 def get_feed(feed):
-    for i in range(3):
+    f = []
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+    }
+    for _ in range(3):
         try:
-            f = parse_feed(feed)
-        except:
-            continue
-        if len(f.entries) > 0:
-            return f
-        else:
-            if i == 2:
+            resp = requests.get(feed, timeout=30, headers=headers)
+            resp.raise_for_status()
+            f = parse_feed(resp.content)
+            if len(f.entries) > 0:
                 return f
+        except requests.exceptions.Timeout:
+            print(f"Timeout while fetching feed: {feed}")
+            continue
+        except Exception as e:
+            print(f"Error while fetching feed: {feed}: {e}")
+            continue
+    return f
 
 
 def main():
@@ -31,6 +41,8 @@ def main():
     for name, info in data["feeds"].items():
         info["posts"] = []
         feed_data = get_feed(info["feed"])
+        if feed_data == []:
+            continue
         for entry in feed_data.entries:
             if entry["title"] in [post["title"] for post in info["posts"]]:
                 continue

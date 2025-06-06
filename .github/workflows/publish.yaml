@@ -34,13 +34,15 @@ jobs:
           python-version: "3.12"
       - name: install dependencies
         run: pip install -r requirements.txt
-      - name: render 
+      - name: render
         run: ./render
+        env:
+          PYTHONUNBUFFERED: 1
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: 'rendered'
-  
+
   deploy:
     needs: build
     environment:
