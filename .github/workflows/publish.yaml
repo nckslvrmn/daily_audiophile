@@ -34,8 +34,6 @@ jobs:
           ruby-version: "3.4.2"
       - name: render
         run: ruby render.rb
-        env:
-          RUBYOPT: "-W0"
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

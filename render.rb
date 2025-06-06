@@ -9,9 +9,7 @@ require 'rss'
 require 'time'
 require 'yaml'
 
-def strip_html_tags(text)
-
-end
+$stdout.sync = true
 
 def get_feed(feed_url, timeout)
   3.times do
