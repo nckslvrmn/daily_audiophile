@@ -25,13 +25,8 @@ Daily Audiophile is inspired by the original [Daily Audiophile](https://www.dail
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/daily_audiophile.git
+git clone https://github.com/nckslvrmn/daily_audiophile.git
 cd daily_audiophile
-```
-
-2. Install Ruby dependencies:
-```bash
-bundle install
 ```
 
 ### Running Locally
