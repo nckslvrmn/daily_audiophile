@@ -25,19 +25,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: "3.4.2"
+          ruby-version: "4.0.0"
       - name: render
         run: ruby render.rb
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: 'rendered'
+          path: "rendered"
 
   deploy:
     needs: build

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
   <meta charset="utf-8">
@@ -8,75 +8,245 @@
   <meta name="robots" content="nofollow, noarchive">
   <meta name="description" content="A modern take on the RSS landing page, tailored for audiophiles">
   <meta name="keywords" content="rss, audiophile">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/css/bootstrap.min.css" integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎧</text></svg>">
   <style>
-    a {
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-primary: #ffffff;
+      --bg-secondary: #f8f9fa;
+      --text-primary: #000000;
+      --text-secondary: #666666;
+      --link-color: #2361a1;
+      --border-color: #dee2e6;
+      --new-badge-bg: #ff8a00;
+      --new-badge-text: #ffffff;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg-primary: #1a1a1a;
+        --bg-secondary: #2d2d2d;
+        --text-primary: #e0e0e0;
+        --text-secondary: #a0a0a0;
+        --link-color: #4a9eff;
+        --border-color: #404040;
+        --new-badge-bg: #ff8a00;
+        --new-badge-text: #000000;
+      }
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      padding: 1rem;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    header {
+      margin: 2rem 0 3rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    .last-updated {
+      color: var(--text-secondary);
+      font-size: 0.875rem;
+      margin-top: 0.5rem;
+    }
+
+    .feeds-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .feed-card {
+      background-color: var(--bg-secondary);
+      border-radius: 8px;
+      padding: 1.5rem;
+      border: 1px solid var(--border-color);
+    }
+
+    .feed-header {
+      margin-bottom: 1rem;
+      border-bottom: 2px solid var(--border-color);
+      padding-bottom: 0.75rem;
+    }
+
+    .feed-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+
+    .feed-title a {
+      color: var(--text-primary);
       text-decoration: none;
-      color: #2361a1;
+      transition: color 0.2s;
     }
 
-    tr td {
-      padding-left: 0 !important;
+    .feed-title a:hover {
+      color: var(--link-color);
     }
 
-    tr th {
-      padding-left: 0 !important;
+    .posts-list {
+      list-style: none;
     }
 
-    td a {
-      color: #000;
+    .post-item {
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border-color);
     }
 
-    strong em {
-      color: #ff8a00;
-      font-size: 0.6em;
+    .post-item:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
     }
 
-    .feed {
-      width: 300px;
+    .post-link {
+      color: var(--link-color);
+      text-decoration: none;
+      display: inline;
+      transition: opacity 0.2s;
+    }
+
+    .post-link:hover {
+      opacity: 0.8;
+      text-decoration: underline;
+    }
+
+    .new-badge {
       display: inline-block;
-      float: unset;
+      background-color: var(--new-badge-bg);
+      color: var(--new-badge-text);
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      margin-left: 0.5rem;
+      vertical-align: middle;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .empty-feed {
+      color: var(--text-secondary);
+      font-style: italic;
+      font-size: 0.9rem;
+    }
+
+    .extra-links {
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 2px solid var(--border-color);
+    }
+
+    .extra-links-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .extra-link {
+      font-size: 0.9rem;
+    }
+
+    .extra-link a {
+      color: var(--link-color);
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .extra-link a:hover {
+      opacity: 0.8;
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 0.5rem;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .feeds-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .feed-card {
+        padding: 1rem;
+      }
+
+      .extra-links-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 
-<body class="py-3">
-  <div class="p-3">
-    <div class="row pt-3 mt-5 mb-3">
-      <div class="col-md mx-3">
-        <h1>DAILY AUDIOPHILE</h1>
-      </div>
-    </div>
-    <div class="row py-3">
-      <% data['feeds'].each do |name, info| %>
-      <div class="feed m-3">
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">
-                <h4><a href="<%= info['home'] %>" target="_blank"><%= name %></a></h4>
-              </th>
-            </tr>
-          </thead>
-          <tbody>
+<body>
+  <div class="container">
+    <header role="banner">
+      <h1>DAILY AUDIOPHILE</h1>
+      <div class="last-updated" aria-label="Last updated">Last updated: <%= Time.now.utc.strftime('%B %d, %Y at %H:%M UTC') %></div>
+    </header>
+
+    <main role="main">
+      <div class="feeds-grid">
+        <% data['feeds'].each do |name, info| %>
+        <article class="feed-card" aria-labelledby="feed-<%= name.gsub(/\s+/, '-').downcase %>">
+          <div class="feed-header">
+            <h2 class="feed-title" id="feed-<%= name.gsub(/\s+/, '-').downcase %>">
+              <a href="<%= info['home'] %>" target="_blank" rel="noopener noreferrer"><%= name %></a>
+            </h2>
+          </div>
+          <% if info['posts'] && info['posts'].any? %>
+          <ul class="posts-list" role="list">
             <% info['posts'].each do |post| %>
-            <tr>
-              <td><a href="<%= post['link'] %>" target="_blank"><%= post['title'] %></a><% if post['new'] == true %><strong><em>&nbsp;&nbsp;&nbsp;NEW</em></strong><% end %></td>
-            </tr>
+            <li class="post-item">
+              <a href="<%= post['link'] %>" target="_blank" rel="noopener noreferrer" class="post-link"><%= post['title'] %></a><% if post['new'] == true %><span class="new-badge" aria-label="Posted within last 24 hours">New</span><% end %>
+            </li>
             <% end %>
-          </tbody>
-        </table>
+          </ul>
+          <% else %>
+          <p class="empty-feed">No recent posts</p>
+          <% end %>
+        </article>
+        <% end %>
       </div>
-      <% end %>
-    </div>
-    <div class="row py-2"></div>
-    <div class="row p-0">
-      <% data['extra_links'].each do |name, link| %>
-      <div class="feed mx-3">
-        <h6><a href="<%= link %>" target="_blank"><%= name %></a></h6>
-      </div>
-      <% end %>
-    </div>
+
+      <section class="extra-links" aria-labelledby="extra-links-heading">
+        <h2 id="extra-links-heading" style="font-size: 1.5rem; margin-bottom: 1rem;">Additional Resources</h2>
+        <div class="extra-links-grid">
+          <% data['extra_links'].each do |name, link| %>
+          <div class="extra-link">
+            <a href="<%= link %>" target="_blank" rel="noopener noreferrer"><%= name %></a>
+          </div>
+          <% end %>
+        </div>
+      </section>
+    </main>
   </div>
 </body>
 
