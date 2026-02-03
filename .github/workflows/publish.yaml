@@ -61,3 +61,14 @@ jobs:
         uses: nckslvrmn/github_cleaner@main
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+        env:
+          CLEAN_WORKFLOW_RUNS: true
+          CLEAN_DEPLOYMENTS: true
+          CLEAN_ARTIFACTS: true
+          CLEAN_CACHES: true
+          CLEAN_PAGES: true
+          CLEAN_PACKAGES: true
+          CLEAN_RELEASE_ASSETS: true
+          KEEP_LATEST_ARTIFACTS: 1
+          KEEP_LATEST_PACKAGES: 1
+          KEEP_LATEST_RELEASES: 1
