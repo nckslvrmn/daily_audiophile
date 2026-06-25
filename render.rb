@@ -46,7 +46,7 @@ def get_feed(feed_url, timeout)
       feed_content = nil
       content_type = nil
 
-      URI.open(feed_url, read_timeout: timeout, open_timeout: timeout) do |f|
+      URI.open(feed_url, read_timeout: timeout, open_timeout: timeout, 'User-Agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36') do |f|
         content_type = f.content_type
         feed_content = f.read
       end
