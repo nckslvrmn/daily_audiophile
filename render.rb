@@ -141,7 +141,7 @@ threads.each(&:join)
 
 data['feeds'] = results.compact.to_h
 
-template = ERB.new(File.read('template.html.erb'))
+template = ERB.new(File.read('template.html.erb', encoding: Encoding::UTF_8))
 html = template.result(binding)
 
 Dir.mkdir('rendered') unless Dir.exist?('rendered')

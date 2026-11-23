@@ -4,7 +4,7 @@ feeds:
     feed: https://www.stereophile.com/rss.xml
   Absolute Sound:
     home: https://www.theabsolutesound.com/
-    feed: https://www.theabsolutesound.com/articles/feed
+    feed: https://www.theabsolutesound.com/articles/feed/
   Enjoy The Music:
     home: https://www.enjoythemusic.com/
     feed: https://www.enjoythemusic.com/enjoythemusic.xml
@@ -96,9 +96,6 @@ feeds:
   Hifi Advice:
     home: https://www.hifi-advice.com/blog/
     feed: https://www.hifi-advice.com/blog/feed/
-  Audiosolace:
-    home: https://audiosolace.com/
-    feed: https://audiosolace.com/feed/
   Resistor Mag:
     home: https://www.resistormag.com/
     feed: https://www.resistormag.com/feed
@@ -131,6 +128,7 @@ extra_links:
   Audiophile Man: https://www.theaudiophileman.com
   Audiophile Review: https://audiophilereview.com
   AudioShark: https://www.audioshark.org
+  Audiosolace: https://audiosolace.com/
   AVMentor.net: https://www.avmentor.net
   AVShowrooms: https://www.avshowrooms.com
   Canuck Audio Mart: https://www.canuckaudiomart.com
